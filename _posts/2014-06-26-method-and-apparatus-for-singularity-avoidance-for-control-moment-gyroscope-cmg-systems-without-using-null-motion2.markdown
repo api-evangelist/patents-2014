@@ -1,0 +1,69 @@
+---
+
+title: Method and apparatus for singularity avoidance for control moment gyroscope (CMG) systems without using null motion
+abstract: A method is described for avoiding gyroscopic singularities during attitude correction to a system, such as a spacecraft having a CMG array. The method receives a corrective torque vector μ and gimbal angle values δ for each of at least three gimbals within the CMG array. The method generates a Jacobian matrix A as a function of gimbal angle values δ. The method calculates a determinant D of Jacobian matrix A. If the determinant is not equal to zero, it is not singular, and the method calculates a gimbal rate {dot over (δ)} using a pseudo-inverse steering law equation. If the determinant is equal to zero, it is singular, and the method calculates a gimbal rate {dot over (δ)} using a singularity avoidance steering law equation. The gimbal rate {dot over (δ)} is output and can be applied to a CMG array resulting in applied torque to a spacecraft and attitude correction.
+url: http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=1&f=G&l=50&d=PALL&S1=09567112&OS=09567112&RS=09567112
+owner: The United States of America, as represented by the Secretary of the Navy
+number: 09567112
+owner_city: Washington
+owner_country: US
+publication_date: 20140626
+---
+This application is a non provisional application of and claims priority to U.S. Patent Application 61 840 010 filed on Jun. 27 2013 which is hereby incorporated by reference in its entirety.
+
+The invention described herein was made by employees of the United States Government and may be manufactured and used by or for the Government of the United States of America for governmental purposes without the payment of any royalties thereon or therefore.
+
+This invention relates to the field of spacecraft vehicle control and more specifically to a method and apparatus for avoiding gyroscope array singularities.
+
+Control moment gyroscope CMG arrays are used for spacecraft attitude control due to their torque producing capability. A typical attitude control system includes an array of three or more CMGs. Each CMG within the array includes a rotor spinning about an axis mounted to an actuated gimbal. The rotational motion of the rotor and gimbal creates an angular momentum vector and a torque vector. The torque vector is orthogonal to the angular momentum vector. The rate of rotation of the gimbal controls the torque vector producing movement in a desired direction when the torque is not zero.
+
+Controlling attitude for a spacecraft requires at least three degrees of freedom. Thus a typical attitude adjustment system may use an array of at least three CMGs that together output a combined torque. A corrective torque vector can be calculated by comparing the desired attitude of the spacecraft with the actual spacecraft attitude to generate a corrective torque vector .
+
+Corrective torque vector may then be used to calculate the gimbal rate dot over necessary to correct attitude. This calculation may be expressed as Adot over where A is a Jacobian matrix as a function of the gimbal angle values for the CMGs in the CMG array dot over is a gimbal rate and is the corrective torque vector. Without performing null motion calculations the gimbal rate dot over can be calculated by a pseudo inverse steering law equation dot over A AA where dot over is the gimbal rate A is a Jacobian matrix determined by the gimbal angle values for each of the CMGs in the CMG array Ais the Jacobian matrix A transposed and is the corrective torque vector.
+
+An undesirable condition known as a singularity or a singular state occurs when gimbals of a CMG array are respectively oriented so that each of the torque vectors produced by moving the gimbals are parallel to each other. The pseudo inverse steering law equation is unusable when a CMG array is in a singular state. When a CMG array is in a singular state the determinant D of Jacobian matrix A is zero. For a CMG array using three CMGs a Jacobian matrix A has the form
+
+Various calculations are known in the art for addressing singularities. These methods include singularity robust inverse techniques path planning methods preferred gimbal angle methods and the use of variable speed CMGs VSCMGs . However these methods each exhibit various limitations. For example the singularity robust inverse technique of Roser et al. cannot not be used for all angle sets produced by a CMG array. X. Roser M. Sghedoni Control Moment Gyroscopes CMG s and their Application in Future Scientific Missions Spacecraft Guidance Navigation and Control Systems Proceedings of the 3rd ESA International Conference 26 29 Nov. 1996 pp. 523 528 Noordwijk the Netherlands. 
+
+U.S. Pat. No. 6 039 290 to Wie et al. teaches a method using non zero elements in the off diagonal element of the positive definite diagonal matrix P. However the choice of matrix P is arbitrary and does not guarantee quick transients of singular states.
+
+U.S. Pat. No. 6 131 056 to Bailey et al. teaches a method of using an open loop signal when the CMG array becomes singular. This method is computationally expensive and may result in a large control error due to disturbances.
+
+In accordance with one embodiment a method for avoiding gyroscopic singularities during attitude correction includes receiving a corrective torque vector receiving gimbal angle values for each of at least three gimbals within a CMG array generating a Jacobian matrix A as a function of the gimbal angle values calculating a determinant D of the Jacobian matrix A determining whether the determinant D is equal to zero wherein when the determinant D is not equal to zero calculating a gimbal rate dot over using a pseudo inverse steering law equation otherwise wherein when the determinant D is equal to zero calculating a gimbal rate dot over using a singularity avoidance steering law equation and outputting the gimbal rate dot over .
+
+In accordance with another embodiment a computer based apparatus for avoiding gyroscopic singularities during attitude correction includes a processing component configured to perform the above method.
+
+In accordance with another embodiment a computer program storage component has stored therein program instructions executable by a computer processing component to perform the above method.
+
+Embodiments in accordance with the invention are further described herein with reference to the drawings.
+
+In one embodiment computer apparatus including method is located on spacecraft . In alternate embodiments computer apparatus and or method can be at a location remote from spacecraft and the output of method communicated to spacecraft . In various embodiments computer apparatus may be a processing component configured to perform method or a computer program storage component with stored program instructions executable by a computer processing component to perform method . A processing component physically configured to perform method may include but is not limited to a microprocessor a field programmable gate array or an application specific integrated circuit. A computer program storage component may include but is not limited to non volatile random access memory hard disk drives and optical discs. In some embodiments attitude controller may be differently located for example as part of computer apparatus .
+
+In computer apparatus includes a central processing unit CPU having at least one memory for storing method . Computer apparatus can receive inputs to and send outputs from method . More particularly computer apparatus can receive inputs to method from CMG array and attitude controller and can send outputs to CMG array and other systems both on and remote from spacecraft . In one embodiment method is embodied as computer implementable code stored in memory . In one embodiment method is stored as computer implementable code i.e. program instructions executable by a computer processing component in a computer program product such as computer readable disk or other computer program storage component and can be loaded into memory via one or more input interfaces not shown .
+
+Optionally in operation a corrective torque vector is generated after receiving and comparing a desired attitude measurement with an actual attitude measurement and processing transitions from optional operation to operation . In one embodiment the desired attitude measurement may be received at spacecraft from steering system not shown or other directional communication. In one embodiment the actual attitude measurement may be received from attitude controller or other attitude measurement communication.
+
+In operation method receives a value for corrective torque vector and processing transitions from operation to operation . In one embodiment method receives corrective torque vector from attitude controller .
+
+In operation method receives gimbal angle values for each of at least three gimbals within CMG array and processing transitions from operation to operation . In one embodiment method receives inputs of gimbal angle values for each of CMGs and . In one embodiment the inputs of gimbal angle values for each of CMGs and are received from each of CMGs and . in one embodiment the inputs of gimbal angle values for each of CMGs and are received from attitude controller . In some embodiments operation is performed after operation .
+
+In operation method generates a Jacobian matrix A as a function of gimbal angle values using the gimbal angle values for each of CMGs and and calculates a determinant D of Jacobian matrix A and processing transitions from operation to decision operation . Generation of a Jacobian matrix and calculation of a determinant for a Jacobian matrix is well known to those of skill in the art and not further detailed herein.
+
+In decision operation a determination is made whether CMG array is in a singular state based on the value of the determinant D calculated in operation . In method the value of determinant D establishes whether CMG array is in a singular state. In one embodiment when the value of determinant D is determined to be not zero NO CMG array is not in a singular state and processing transitions from operation to operation . Alternatively when the value of determinant D is zero YES CMG array is determined to be in a singular state and processing transitions from operation to operation .
+
+Referring now to operation in operation method calculates a gimbal rate dot over using a pseudo inverse steering law equation when CMG array is not in a singular state and processing transitions from operation to operation . In one embodiment method generates gimbal rate dot over based on the pseudo inverse steering law equation dot over in which dot over is the gimbal rate A is the Jacobian matrix determined by the gimbal angle values for each of CMGs and Ais the Jacobian matrix A transposed and is the corrective torque vector.
+
+Referring back to operation in operation method calculates gimbal rate dot over using a singularity avoidance steering law equation when CMG array is in a singular state and processing transitions from operation to operation . In one embodiment method generates gimbal rate dot over based on one of three singularity avoidance steering law equations a direct modification singularity avoidance steering law equation a constrained singularity avoidance equation or a penetration singularity avoidance steering law equation.
+
+The direct modification singularity avoidance steering law equation utilizes a direct modification of singular values. Singular value decomposition of Jacobian matrix A is written as A U V where UU 1 VV 1 and
+
+When the rank of Jacobian matrix A is three the pseudo inverse of Jacobian matrix A is written as A U V where
+
+The constrained singularity avoidance steering law equation utilizes a constrained singularity robust inverse. In the constrained singularity avoidance steering law equation determinant D of Jacobian matrix A becomes zero. When the CMG array approaches singularity a constraint can be imposed such that determinant D of Jacobian matrix A quickly transients through zero. The time derivative of determinant D of Jacobian matrix A can be written as
+
+The penetration singularity avoidance steering law equation utilizes a singularity penetration using a unit delay. In the penetration singularity avoidance steering law equation when CMG array approaches singular states gimbal rates dot over commanded by the pseudo inverse steering law increase as determinant D of Jacobian matrix A approaches zero. At such instances when CMG array approaches a singular state with accompanying high gimbal rates gimbal rate dot over will be held its last valid non singular value dot over by applying a unit delay. The anomalous transient associated with the attempt to invert the singular Jacobian matrix A is ignored by rapidly passing through the singularity instead holding the last valid nonsingular gimbal rate dot over . The penetration singularity avoidance steering law equation becomes dot over dot over where dot over is a last computed gimbal rate before CMG array approaches a singular state.
+
+In operation the gimbal rate dot over calculated in operation or operation is output from method with processing exiting method . In one embodiment gimbal rate dot over is output for example as a gimbal rate command to CMG array and the application of the torque results in an attitude correction of spacecraft .
+
+It will be understood that many additional changes in the details materials procedures and arrangement of parts which have been herein described and illustrated to explain the nature of the invention may be made by those skilled in the art within the principle and scope of the invention as expressed in the appended claims.
+
